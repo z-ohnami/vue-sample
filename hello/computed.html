@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>odd</h2>
+    <ul v-for="num of odd">
+      <li>{{ num }}</li>
+    </ul>
+
+    <h2>even</h2>
+    <ul v-for="num of even">
+      <li>{{ num }}</li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      // data: function() {
+      //   return {
+      //     numArray: [1, 2, 3, 4, 5]
+      //   }
+      // },
+      data: {
+        numArray: [1, 2, 3, 4, 5, 6]
+      },
+      computed: {
+        odd() {
+          return this.numArray.filter(num => { return num % 2 !== 0 })
+        },
+        even() {
+          return this.numArray.filter(num => { return num % 2 === 0 })
+        }
+      }
+    })
+  </script>
+</body>
+</html>

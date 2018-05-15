@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Router Sample</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>VueRouter</h1>
+    <ul>
+      <li><router-link to="/a">page A</router-link></li>
+      <li><router-link to="/b">page B</router-link></li>
+    </ul>
+
+    <ul>
+        <li><router-link to="/user/profile">profile</router-link></li>
+        <li><router-link to="/user/notifications">notifications</router-link></li>
+    </ul>
+    <router-view></router-view>
+  </div>
+
+  <script>
+    Vue.use(VueRouter)
+
+    const PageA = {
+      template: '<div>page A desu.</div>'
+    }
+
+    const PageB = {
+      template: '<div>page B dasu.</div>'
+    }
+
+    const User = {
+      template: `
+        <div class="user">
+          User Layout<br>
+          -----------------
+          <router-view></router-view>
+        </div>
+      `
+    }
+
+    const UserProfile = {
+      template: `
+        <div>
+          profile
+          <ul>
+            <li>name: hoge tarou</li>
+            <li>age: 15</li>
+          </ul>
+        </div>
+      `
+    }
+
+    const UserNotifications = {
+      template: `
+        <div>
+          notifications
+          <div>
+            <input type="checkbox" name="mail" value="1"> mail <br>
+            <input type="checkbox" name="push" value="2"> push
+          </div>
+        </div>
+      `
+    }
+
+    const routes = [
+      { path: '/a', component: PageA },
+      { path: '/b', component: PageB },
+      {
+        path: '/user',
+        component: User,
+        children: [
+          {
+            path: 'profile',
+            component: UserProfile
+          },
+          {
+            path: 'notifications',
+            component: UserNotifications
+          }
+        ]
+      }
+    ]
+
+    const router = new VueRouter({routes})
+
+    var app = new Vue({router}).$mount("#app")
+  </script>
+</body>
+</html>

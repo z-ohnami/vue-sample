@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>alert</h2>
+    <div v-on:click="showAlert">
+      alert
+    </div>
+
+    <h2>count</h2>
+    <div v-on:click="increment">
+      increment
+    </div>
+    <p>count: {{ count }}</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        count: 0
+      },
+      methods: {
+        showAlert: function() {
+          alert("utage")
+        },
+        increment: function() {
+          this.count++
+        }
+      }
+    })
+  </script>
+</body>
+</html>

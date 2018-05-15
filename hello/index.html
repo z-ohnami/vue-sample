@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    count: {{ count }}
+    <div v-show="showFlag">secret</div>
+    <div v-if="showFlag">secret</div>
+    <div v-else="showFlag">display</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+        showFlag: false
+      },
+      methods: {
+        countup: () => {
+          this.count++
+        }
+      },
+      created: () => {
+        console.log('makoto');
+      }
+    })
+  </script>
+</body>
+</html>

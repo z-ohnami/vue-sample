@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo Sample</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <form v-on:submit.prevent="sendTodo">
+      <input v-model="todo">
+      <input type="submit" value="add">
+    </form>
+
+    <ul v-for="item in list">
+      <li v-on:click="doneTodo(item)">
+        <span>status:{{ item.status }}</span>
+        <s v-if="item.status == 'done'">
+          {{ item.text }}
+        </s>
+        <span v-else>
+          {{ item.text }}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        todo: "",
+        list: []
+      },
+      methods: {
+        sendTodo: function() {
+          this.list.push({
+            text: this.todo,
+            status: 'todo'
+          })
+          this.todo = ""
+        },
+        doneTodo: function(item) {
+          if (item.status == 'done') {
+            item.status = 'todo'
+          } else {
+            item.status = 'done'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

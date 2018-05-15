@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>input</h2>
+    <input v-model="text">
+    <p>{{ text }}</p>
+
+    <textarea v-model="textarea"></textarea>
+    <p>{{ textarea }}</p>
+
+    <h3>checkbox single</h3>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <h3>checkbox multi</h3>
+    <input type="checkbox" id="apple" value="1" v-model="checkedNames">
+    <label for="apple">Apple</label>
+    <input type="checkbox" id="lemon" value="2" v-model="checkedNames">
+    <label for="lemon">Lemon</label>
+    <input type="checkbox" id="orange" value="3" v-model="checkedNames">
+    <label for="orange">Orange</label>
+    <input type="checkbox" id="peach" value="4" v-model="checkedNames">
+    <label for="peach">Peach</label>
+    <p>{{ checkedNames }}</p>
+
+    <h3>radio</h3>
+    <input type="radio" id="fm" value="FM" v-model="modulation">
+    <label for="fm">FM</label>
+    <input type="radio" id="am" value="AM" v-model="modulation">
+    <label for="am">AM</label>
+    <p>Modulation: {{ modulation }}</p>
+
+    <h3>select single</h3>
+    <select v-model="sushi">
+      <option disabled value="">お好みでお選びください</option>
+      <option>トロ</option>
+      <option>アジ</option>
+      <option>シメサバ</option>
+      <option>イクラ</option>
+    </select>
+    <p>Sushi: {{ sushi }}</p>
+
+    <h3>select multi</h3>
+    <select v-model="sushiNames" multiple>
+      <option disabled value="">お好みでお選びください</option>
+      <option value="1">トロ</option>
+      <option value="2">アジ</option>
+      <option value="3">シメサバ</option>
+      <option value="4">イクラ</option>
+    </select>
+    <p>Sushi: {{ sushiNames }}</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        text: "",
+        textarea: "",
+        checked: false,
+        checkedNames: [],
+        modulation: "FM",
+        sushi: "",
+        sushiNames: ""
+      }
+    })
+  </script>
+</body>
+</html>

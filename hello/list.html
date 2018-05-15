@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>array</h2>
+    <ul v-for="(item, index) in array">
+      <li>{{ item }} - {{ index }}</li>
+    </ul>
+
+    <h2>object</h2>
+    <ul v-for="(item, key, index) in object">
+      <li>{{ item }} - {{ key }} - {{ index }}</li>
+    </ul>
+
+    <h2>number</h2>
+    <ul v-for="(num, index) in number">
+      <li>{{ num }} - {{ index }}</li>
+    </ul>
+
+    <h2>string</h2>
+    <ul v-for="(char, index) in string">
+      <li>{{ char }} - {{ index }}</li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        array: ['apple', 'banana', 'lemon', 'watermelon'],
+        object: {
+          'beef':'curry',
+          'pork':'sote',
+          'chiken':'egg'
+        },
+        number: 10,
+        string: 'Wing'
+      }
+    })
+  </script>
+</body>
+</html>

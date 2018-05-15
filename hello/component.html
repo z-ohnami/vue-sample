@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <item content="suica"></item>
+    <item content="pasmo"></item>
+    <item content="icoka"></item>
+  </div>
+
+  <script>
+    Vue.component('item', {
+      template: '<div>item! {{ content }}</div>',
+      props: ['content']
+    })
+
+    var app = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

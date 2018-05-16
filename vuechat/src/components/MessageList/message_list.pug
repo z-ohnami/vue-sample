@@ -1,0 +1,14 @@
+ul
+  li(v-for="(message) in messages")
+    el-row
+      el-col(:span="3")
+        img(src="./assets/avatar.png" width=50)
+      el-col(:span="21")
+        el-row
+          el-col(:span="3")
+            .grid-content.name {{ message.user.name }}
+          el-col(:span="21")
+            .grid-content.date {{ message.date }}
+        el-row
+          el-col(:span="24")
+            .grid-content.message {{ message.body }}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <my-component></my-component>
+    <parent></parent>
+  </div>
+
+  <script>
+    //Vue.component('my-component', {
+    //  template: '<p>MyComponent</p>'
+    //})
+
+    let MyComponent = {
+      template: '<p>{{ message }}</p>',
+      data() {
+        return {
+          message: 'Hello Vue.js...'
+        }
+      },
+      methods: {
+      }
+    }
+
+    let Child = {
+      template: '<p v-on:click="sendEvent">Child{{ val }}</p>',
+      props: ['val'],
+      methods: {
+        sendEvent(){
+          this.$emit('childs-event')
+        }
+      }
+    }
+
+    let Parent = {
+      template: '<div><p>Parent</p><p><child val="1" v-on:childs-event="acceptEvent"></child><child val="2"></child></p></div>',
+      components: {
+        'child': Child
+      },
+      methods: {
+        acceptEvent() {
+          alert('accept!!')
+        }
+      }
+    }
+
+    var app = new Vue({
+      el: '#app',
+      components: {
+        'my-component': MyComponent,
+        'parent': Parent
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<title>Vue test</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app" class="myclass1">
+  <p>
+    {{ message }}
+  </p>
+</div>
+
+<div id="ppa" class="myclass1">
+<p>
+    {{ message }}
+</p>
+</div>
+      
+<script>
+    new Vue({
+      el: '.myclass1',
+      data: { message: 'Hello world' }
+    })
+</script>
